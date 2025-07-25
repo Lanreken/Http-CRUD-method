@@ -1,0 +1,18 @@
+{
+  "name": "class-work-two",
+  "version": "1.0.0",
+  "description": "",
+  "main": "crud.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node crud.js",
+    "dev": "nodemon crud.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "uuid": "^11.1.0"
+  }
+}

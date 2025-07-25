@@ -1,0 +1,16 @@
+[
+  {
+    "id": "f5b07ea9-99d1-4d18-83bc-c4b6c0eee5ff",
+    "name": "Adelugba Olanrewaju",
+    "age": 367,
+    "gender": "Male",
+    "isEmployed": true
+  },
+  {
+    "id": "3c09e876-f98f-4947-9b97-4145e809044f",
+    "name": "Adelugba Lanre",
+    "age": 34,
+    "gender": "Male",
+    "isEmployed": false
+  }
+]
