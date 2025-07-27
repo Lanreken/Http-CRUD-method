@@ -1,6 +1,6 @@
 // Assigning the database to a variable
 // Import core and local modules
-const studentDB = require("../class work two/db/database.json");
+const studentDB = require("./db/database.json");
 //Calling the http module
 const http = require("http");
 //Assigning the port number
@@ -111,6 +111,28 @@ const server = http.createServer((req, res) => {
           data: student,
         })
       );
+    }
+  } else if (url.startsWith("/delete-student/") && method === "DELETE") {
+    const id = url.split("/")[2];
+    const index = studentDB.findIndex((s) => s.id === id);
+    if (index === -1) {
+      res.writeHead(404, { "content-type": "text/plain" });
+      res.end("Student not found");
+    } else {
+      studentDB.splice(index, 1);
+      fs.writeFile("./db/database.json", JSON.stringify(studentDB, null, 2), (err) => {
+        if (err) {
+          res.writeHead(400, { "content-type": "text/plain" });
+          res.end("Bad Request");
+        } else {
+          res.writeHead(200, { "content-type": "application/json" });
+          res.end(
+            JSON.stringify({
+              message: "Student deleted successfully",
+            })
+          );
+        }
+      });
     }
   }
 });

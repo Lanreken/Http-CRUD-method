@@ -7,10 +7,24 @@
     "isEmployed": true
   },
   {
-    "id": "3c09e876-f98f-4947-9b97-4145e809044f",
-    "name": "Adelugba Lanre",
-    "age": 34,
-    "gender": "Male",
-    "isEmployed": false
+    "id": "95829839-4e43-4d58-a8ac-3045a622db89",
+    "name": "Johnson Favour",
+    "age": 19,
+    "gender": "Female",
+    "isEmployed": true
+  },
+  {
+    "id": "d3f8c2c4-2729-406b-a4be-b35cc94bf8bc",
+    "name": "Joy David",
+    "age": 29,
+    "gender": "Female",
+    "isEmployed": true
+  },
+  {
+    "id": "399681f3-513d-4f47-9c66-7c5daf523def",
+    "name": "Lanre Favour",
+    "age": 27,
+    "gender": "Female",
+    "isEmployed": true
   }
 ]
