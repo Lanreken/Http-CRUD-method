@@ -101,8 +101,8 @@ const server = http.createServer((req, res) => {
     const id = url.split("/")[2];
     const student = studentDB.find((s) => s.id === id);
     if (!student) {
-      res.writeHead(404, { "content-type": "text/plain" });
-      res.end("Student not found");
+      res.writeHead(500, { "content-type": "text/plain" });
+      res.end("Error Updating Student");
     } else {
       res.writeHead(200, { "content-type": "application/json" });
       res.end(
@@ -115,30 +115,31 @@ const server = http.createServer((req, res) => {
   } else if (url.startsWith("/delete-student/") && method === "DELETE") {
     const id = url.split("/")[2];
     const index = studentDB.findIndex((s) => s.id === id);
-    if (index === -1) {
-      res.writeHead(404, { "content-type": "text/plain" });
-      res.end("Student not found");
-    } else {
+    if (index !== -1) {
       studentDB.splice(index, 1);
       fs.writeFile("./db/database.json", JSON.stringify(studentDB, null, 2), (err) => {
         if (err) {
           res.writeHead(400, { "content-type": "text/plain" });
-          res.end("Bad Request");
+          res.end("student not found");
         } else {
           res.writeHead(200, { "content-type": "application/json" });
           res.end(
             JSON.stringify({
               message: "Student deleted successfully",
+              data: { id },
             })
           );
         }
       });
     }
+  } else {
+    res.writeHead(400, { "content-type": "text/plain" });
+    res.end("Invalid URL");
   }
 });
 
 //Listening to the server port that has been assigned
-// t    he server will listen to the port and will log a message to the console when it is running
+// the server will listen to the port and will log a message to the console when it is running
 server.listen(PORT, () => {
   //The message that will be logged to the console when the server is running
   console.log(`Server is running on port: ${PORT}`);
