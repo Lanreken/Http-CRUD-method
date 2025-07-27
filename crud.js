@@ -116,7 +116,7 @@ const server = http.createServer((req, res) => {
     const id = url.split("/")[2];
     const index = studentDB.findIndex((s) => s.id === id);
     if (index !== -1) {
-      studentDB.splice(index, 1);
+      const student = studentDB.splice(index, 1);
       fs.writeFile("./db/database.json", JSON.stringify(studentDB, null, 2), (err) => {
         if (err) {
           res.writeHead(400, { "content-type": "text/plain" });
@@ -126,7 +126,7 @@ const server = http.createServer((req, res) => {
           res.end(
             JSON.stringify({
               message: "Student deleted successfully",
-              data: { id },
+              data: student,
             })
           );
         }
